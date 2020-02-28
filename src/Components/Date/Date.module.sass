@@ -1,10 +1,27 @@
+@import "../../variables"
+.day
+  min-width: 40px
+  min-height: 40px
+
+.day::selection
+  background-color: unset
+
+.monthDay
+  @extend .day
+  color: $accent-color
+  font-size: 16px
+  cursor: pointer
+  line-height: 40px
+  letter-spacing: -0.28px
+  text-align: center
+  min-width: 40px
+  min-height: 40px
+
 .currentDay
-    color: red
+  color: red
 
 .selectedDay
-    background-color: #0B3157
-    color: white
+  background-color: $accent-color
+  color: #fff
+  border-radius: 5px
 
-.hiddenDay
-    min-width: 40px
-    min-height: 40px
