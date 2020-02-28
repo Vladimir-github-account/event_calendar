@@ -1,41 +1,39 @@
 import React, {Component} from 'react';
 import moment             from 'moment';
 import Week               from '../Week';
+import _                  from 'lodash';
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentDate: moment(),
+      selectedDate: moment(),
+      viewDate: moment(),
     };
   }
 
+  clickHandler = (date) => {
+    return e => {
+      const state = _.clone(this.state);
+      state.selectedDate = date;
+      this.setState(state);
+    };
+  };
+
   render() {
-    /* const weeks = [];
-     console.log(moment().day(0).format('dddd, MMMM Do YYYY, h:mm:ss'));
-     console.log(moment().date(1).format('dddd, MMMM Do YYYY, h:mm:ss'));
-     const firstDayOfMonth = moment().date(1);
-     console.log('Before add',firstDayOfMonth.format('dddd, MMMM Do YYYY, h:mm:ss'));
-     firstDayOfMonth.add(1, 'w');
-     console.log('After add',firstDayOfMonth.format('dddd, MMMM Do YYYY, h:mm:ss'));
-     console.log('is in mounth?', firstDayOfMonth.month() === firstDayOfMonth.add(1, 'w').month(), firstDayOfMonth.format('dddd, MMMM Do YYYY, h:mm:ss'));
-     console.log('is in mounth?', firstDayOfMonth.month() === firstDayOfMonth.add(1, 'w').month(), firstDayOfMonth.format('dddd, MMMM Do YYYY, h:mm:ss'));
-     console.log('is in mounth?', firstDayOfMonth.month() === firstDayOfMonth.add(1, 'w').month(), firstDayOfMonth.format('dddd, MMMM Do YYYY, h:mm:ss'));
-     console.log('is in mounth?', firstDayOfMonth.month() === firstDayOfMonth.add(1, 'w').month(), firstDayOfMonth.format('dddd, MMMM Do YYYY, h:mm:ss'));
- */
-    const {currentDate} = this.state;
-    const firstDayOfMonth = currentDate.date(1);
+    const {currentDate, selectedDate, viewDate} = this.state;
+    const firstDayOfMonth = moment(viewDate).date(1);
     const weeksComponents = [];
     do {
-      //console.log(firstDayOfMonth.format('dddd, MMMM Do YYYY, h:mm:ss'));
       const day = moment(firstDayOfMonth);
       const firstDayOfWeek = day.day(1);
-      console.log(firstDayOfWeek.format('dddd, MMMM Do YYYY, h:mm:ss'));
       weeksComponents.push(<Week key={firstDayOfWeek}
                                  firstDayOfWeek={firstDayOfWeek}
-                                 currentDate={currentDate}/>);
+                                 currentDate={currentDate}
+                                 selectedDate={selectedDate}
+                                 clickHandler={this.clickHandler}/>);
     } while (firstDayOfMonth.month() === firstDayOfMonth.add(1, 'w').month());
-    console.log(weeksComponents);
     return (
         <div>
           <div>
