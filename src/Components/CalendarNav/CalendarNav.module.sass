@@ -1,0 +1,40 @@
+@import "../../variables"
+
+.calendarNav
+  background-color: $accent-color
+  padding: 0 16px
+  min-height: 40px
+  display: flex
+  justify-content: space-between
+  position: relative
+
+%changeDateButton
+  color: $secondary-color
+  font-size: 12px
+  font-weight: 700
+  line-height: 40px
+
+.prevButton
+  @extend %changeDateButton
+  text-align: left
+
+.nextButton
+  @extend %changeDateButton
+  text-align: right
+
+.openButtonListButton
+  color: #fff
+  font-size: 16px
+  font-weight: 800
+  line-height: 40px
+  text-align: center
+
+.changeViewButton
+  color: rgba(#E8E9EB, 0.5)
+  border: 1px solid rgba(#E8E9EB, 0.25)
+  border-radius: 30px
+  padding: 0 9px
+  font-size: 14px
+  font-weight: 400
+  line-height: 28px
+

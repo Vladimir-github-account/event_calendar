@@ -1,0 +1,17 @@
+@import "../../variables"
+
+.buttonList
+  position: absolute
+  top: 100%
+  left: 0
+  background-color: $accent-color
+  min-width: 100%
+  display: flex
+  justify-content: center
+  padding: 7px 0
+
+.buttonList > * + *
+  margin-left: 6px
+
+.hidden
+  display: none

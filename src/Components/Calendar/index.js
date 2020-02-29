@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
-import moment             from 'moment';
-import _                  from 'lodash';
-import CalendarNav        from '../CalendarNav';
-import WeekList           from '../WeekList';
-import {VIEW_MODES}       from '../../constants';
-import weekDayStyles      from './WeekListStyles/WeekDays.module.sass';
-import weekListStyles     from './WeekListStyles/WeeksList.module.sass';
+import React, { Component } from 'react';
+import moment               from 'moment';
+import _                    from 'lodash';
+import CalendarNav          from '../CalendarNav';
+import WeekList             from '../WeekList';
+import { VIEW_MODES }       from '../../constants';
+import styles               from './Calendar.module.sass';
+import weekDayStyles        from './WeekListStyles/WeekDays.module.sass';
+import weekListStyles       from './WeekListStyles/WeeksList.module.sass';
 
 class Calendar extends Component {
   constructor(props) {
-    super(props);
+    super( props );
     this.state = {
       currentDate: moment(),
       selectedDate: moment(),
@@ -19,38 +20,38 @@ class Calendar extends Component {
   }
 
   nextMonth = (e) => {
-    const state = _.clone(this.state);
-    state.viewDate = state.viewDate.add(1, 'month');
-    this.setState(state);
+    const state = _.clone( this.state );
+    state.viewDate = state.viewDate.add( 1, 'month' );
+    this.setState( state );
   };
 
   prevMonth = (e) => {
-    const state = _.clone(this.state);
-    state.viewDate.subtract(1, 'month');
-    this.setState(state);
+    const state = _.clone( this.state );
+    state.viewDate.subtract( 1, 'month' );
+    this.setState( state );
   };
 
   changeViewMode = (e) => {
-    const state = _.clone(this.state);
+    const state = _.clone( this.state );
     state.viewMode = this.state.viewMode === VIEW_MODES.MONTH
-        ? VIEW_MODES.WEEK
-        : VIEW_MODES.MONTH;
-    this.setState(state);
+                     ? VIEW_MODES.WEEK
+                     : VIEW_MODES.MONTH;
+    this.setState( state );
   };
 
   dayClickHandler = (date) => {
     return e => {
-      const state = _.clone(this.state);
-      state.selectedDate = moment(date);
-      state.viewDate = moment(date);
-      this.setState(state);
+      const state = _.clone( this.state );
+      state.selectedDate = moment( date );
+      state.viewDate = moment( date );
+      this.setState( state );
     };
   };
 
   render() {
-    const {currentDate, selectedDate, viewDate, viewMode} = this.state;
+    const { currentDate, selectedDate, viewDate, viewMode } = this.state;
     return (
-        <div>
+        <div className={styles.calendar}>
           <CalendarNav viewModeClickHandler={this.changeViewMode}
                        nextMonth={this.nextMonth}
                        prevMonth={this.prevMonth}
