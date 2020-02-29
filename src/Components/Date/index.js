@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles     from './Date.module.sass';
 
 function Date(props) {
-  const {date, currentDate, selectedDate, clickHandler} = props;
+  const {date, currentDate, selectedDate, clickHandler, viewDate} = props;
   const selectOnClick = clickHandler(date);
   const isCurrent = currentDate.isSame(date, 'day');
   const isSelected = selectedDate.isSame(date, 'day');
@@ -11,7 +11,7 @@ function Date(props) {
   const style = classNames(monthDay,
       {[`${currentDay}`]: isCurrent},
       {[`${selectedDay}`]: isSelected});
-  if (date.month() === currentDate.month()) {
+  if (date.month() === viewDate.month()) {
     return (<span className={style}
                   onClick={selectOnClick}>{`${date.date()}`}</span>);
   } else {
