@@ -1,8 +1,8 @@
-import React, { Component }    from 'react';
-import PropTypes               from 'prop-types';
-import classNames              from 'classnames';
-import Button                  from '../Button';
-import ListButtonsButtonStyles from './OpenButtonListButton.module.sass';
+import React, { Component }       from 'react';
+import PropTypes                  from 'prop-types';
+import classNames                 from 'classnames';
+import Button                     from '../Button';
+import OpenButtonListButtonStyles from './OpenButtonListButton.module.sass';
 
 class OpenButtonListButton extends Component {
   constructor(props) {
@@ -20,17 +20,20 @@ class OpenButtonListButton extends Component {
 
   render() {
     const { label, styles, displayMonth, displayWeek, changeViewButtonStyles } = this.props;
-    const { buttonList, hidden } = ListButtonsButtonStyles;
+    const { buttonList, hidden, carriage, firstSpan, secondSpan, firstSpanFlip, secondSpanFlip } = OpenButtonListButtonStyles;
     const { isOpened } = this.state;
-    console.log(isOpened);
     const buttonsListStyles = classNames(
         buttonList,
-        {[`${hidden}`]: isOpened},
+        { [`${hidden}`]: isOpened },
     );
     return (
         <div className={styles}
              onClick={this.displayOrHideButtonsList}>
           {label}
+          <div className={carriage}>
+            <span className={isOpened ? firstSpan : firstSpanFlip}/>
+            <span className={isOpened ? secondSpan : secondSpanFlip}/>
+          </div>
           <div className={buttonsListStyles}>
             <Button styles={changeViewButtonStyles}
                     clickHandler={displayWeek}

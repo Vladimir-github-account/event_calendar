@@ -16,10 +16,10 @@ function CalendarNav(props) {
   if ( viewMode === VIEW_MODES.MONTH ) {
     const prevMonthLabel = moment( viewDate )
         .month( moment( viewDate ).month() - 1 )
-        .format( 'MMMM' ).toUpperCase();
+        .format( 'MMM' ).toUpperCase();
     const nextMonthLabel = moment( viewDate )
         .month( moment( viewDate ).month() + 1 )
-        .format( 'MMMM' ).toUpperCase();
+        .format( 'MMM' ).toUpperCase();
     return (
         <nav className={calendarNav}>
           <Button styles={prevButton}
