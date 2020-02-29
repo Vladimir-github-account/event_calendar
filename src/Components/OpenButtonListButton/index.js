@@ -19,7 +19,7 @@ class OpenButtonListButton extends Component {
   };
 
   render() {
-    const { label, styles, clickHandler, changeViewButtonStyles } = this.props;
+    const { label, styles, displayMonth, displayWeek, changeViewButtonStyles } = this.props;
     const { buttonList, hidden } = ListButtonsButtonStyles;
     const { isOpened } = this.state;
     console.log(isOpened);
@@ -33,10 +33,10 @@ class OpenButtonListButton extends Component {
           {label}
           <div className={buttonsListStyles}>
             <Button styles={changeViewButtonStyles}
-                    clickHandler={clickHandler}
+                    clickHandler={displayWeek}
                     label='This week'/>
             <Button styles={changeViewButtonStyles}
-                    clickHandler={clickHandler}
+                    clickHandler={displayMonth}
                     label='This month'/>
           </div>
         </div>

@@ -31,12 +31,32 @@ class Calendar extends Component {
     this.setState( state );
   };
 
-  changeViewMode = (e) => {
+  nextWeek = (e) => {
     const state = _.clone( this.state );
-    state.viewMode = this.state.viewMode === VIEW_MODES.MONTH
-                     ? VIEW_MODES.WEEK
-                     : VIEW_MODES.MONTH;
+    state.viewDate = state.viewDate.add( 1, 'week' );
     this.setState( state );
+  };
+
+  prevWeek = (e) => {
+    const state = _.clone( this.state );
+    state.viewDate.subtract( 1, 'week' );
+    this.setState( state );
+  };
+
+  displayMonth = (e) => {
+    if ( this.state.viewMode !== VIEW_MODES.MONTH ) {
+      const state = _.clone( this.state );
+      state.viewMode = VIEW_MODES.MONTH;
+      this.setState( state );
+    }
+  };
+
+  displayWeek = (e) => {
+    if ( this.state.viewMode !== VIEW_MODES.WEEK ) {
+      const state = _.clone( this.state );
+      state.viewMode = VIEW_MODES.WEEK;
+      this.setState( state );
+    }
   };
 
   dayClickHandler = (date) => {
@@ -52,9 +72,12 @@ class Calendar extends Component {
     const { currentDate, selectedDate, viewDate, viewMode } = this.state;
     return (
         <div className={styles.calendar}>
-          <CalendarNav viewModeClickHandler={this.changeViewMode}
+          <CalendarNav displayMonth={this.displayMonth}
+                       displayWeek={this.displayWeek}
                        nextMonth={this.nextMonth}
                        prevMonth={this.prevMonth}
+                       nextWeek={this.nextWeek}
+                       prevWeek={this.prevWeek}
                        viewMode={viewMode}
                        viewDate={viewDate}/>
           <ul className={weekDayStyles.weekDaysList}>

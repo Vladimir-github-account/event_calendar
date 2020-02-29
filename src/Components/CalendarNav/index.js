@@ -7,7 +7,7 @@ import { VIEW_MODES }       from '../../constants';
 import styles               from './CalendarNav.module.sass';
 
 function CalendarNav(props) {
-  const { viewModeClickHandler, nextMonth, prevMonth, viewMode, viewDate } = props;
+  const { displayMonth, displayWeek, nextMonth, prevMonth, nextWeek, prevWeek, viewMode, viewDate } = props;
   const currentMonthLabel = moment( viewDate )
       .month( moment( viewDate ).month() )
       .format( 'MMMM' ).toUpperCase();
@@ -28,7 +28,8 @@ function CalendarNav(props) {
           <OpenButtonListButton
               styles={openButtonListButton}
               changeViewButtonStyles={changeViewButton}
-              clickHandler={viewModeClickHandler}
+              displayMonth={displayMonth}
+              displayWeek={displayWeek}
               label={currentMonthLabel}/>
           <Button styles={nextButton}
                   clickHandler={nextMonth}
@@ -41,15 +42,16 @@ function CalendarNav(props) {
     return (
         <nav className={calendarNav}>
           <Button styles={prevButton}
-                  clickHandler={prevMonth}
+                  clickHandler={prevWeek}
                   label='PREV'/>
           <OpenButtonListButton
               styles={openButtonListButton}
               changeViewButtonStyles={changeViewButton}
-              clickHandler={viewModeClickHandler}
+              displayMonth={displayMonth}
+              displayWeek={displayWeek}
               label={currentMonthLabel + ' ' + sundayDate + '-' + saturdayDate}/>
           <Button styles={nextButton}
-                  clickHandler={nextMonth}
+                  clickHandler={nextWeek}
                   label='NEXT'/>
         </nav>
     );
