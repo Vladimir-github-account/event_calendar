@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import moment             from 'moment';
 import Week               from '../Week';
 import _                  from 'lodash';
+import weekDayStyles      from './WeekDays.module.sass'
+import weekListStyles     from './WeeksList.module.sass'
 
 class Calendar extends Component {
   constructor(props) {
@@ -41,16 +43,16 @@ class Calendar extends Component {
             <div>Current month</div>
             <div>Next</div>
           </div>
-          <div>
-            <span>M</span>
-            <span>M</span>
-            <span>M</span>
-            <span>M</span>
-            <span>M</span>
-            <span>M</span>
-            <span>M</span>
-          </div>
-          <ul>
+          <ul className={weekDayStyles.weekDaysList}>
+            <li className={weekDayStyles.weekDay}>S</li>
+            <li className={weekDayStyles.weekDay}>M</li>
+            <li className={weekDayStyles.weekDay}>T</li>
+            <li className={weekDayStyles.weekDay}>W</li>
+            <li className={weekDayStyles.weekDay}>T</li>
+            <li className={weekDayStyles.weekDay}>F</li>
+            <li className={weekDayStyles.weekDay}>S</li>
+          </ul>
+          <ul className={weekListStyles.weekList}>
             {weeksComponents}
           </ul>
         </div>
