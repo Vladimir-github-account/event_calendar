@@ -4,8 +4,8 @@ import _                  from 'lodash';
 import CalendarNav        from '../CalendarNav';
 import WeekList           from '../WeekList';
 import {VIEW_MODES}       from '../../constants';
-import weekDayStyles      from './WeekDays.module.sass';
-import weekListStyles     from './WeeksList.module.sass';
+import weekDayStyles      from './WeekListStyles/WeekDays.module.sass';
+import weekListStyles     from './WeekListStyles/WeeksList.module.sass';
 
 class Calendar extends Component {
   constructor(props) {
@@ -53,7 +53,9 @@ class Calendar extends Component {
         <div>
           <CalendarNav viewModeClickHandler={this.changeViewMode}
                        nextMonth={this.nextMonth}
-                       prevMonth={this.prevMonth}/>
+                       prevMonth={this.prevMonth}
+                       viewMode={viewMode}
+                       viewDate={viewDate}/>
           <ul className={weekDayStyles.weekDaysList}>
             <li className={weekDayStyles.weekDay}>S</li>
             <li className={weekDayStyles.weekDay}>M</li>
