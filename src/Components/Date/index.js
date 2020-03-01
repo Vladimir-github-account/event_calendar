@@ -10,7 +10,8 @@ function Date(props) {
   if ( date.month() === viewDate.month() ) {
     const selectOnClick = clickHandler( date );
     const eventsArr = events.filter(
-        event => moment( event.date ).dayOfYear() === moment( date ).dayOfYear()
+        event => moment( event.date ).format( 'YYYY MM DD' ) === moment( date )
+            .format( 'YYYY MM DD' )
     );
     const eventListComponent = eventsArr.length > 0
                                ? <DateEventList events={eventsArr[0].events}/>

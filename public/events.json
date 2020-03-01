@@ -1,23 +1,25 @@
 [
   {
-    "date": "2020-02-29",
+    "date": "2020-02-11",
     "events": [
       {
         "id": 1,
         "name": "February",
         "body": "February",
+        "type": "Practice",
         "time": "11:00",
         "isIn": true
       }
     ]
   },
   {
-    "date": "2020-03-29",
+    "date": "2020-03-11",
     "events": [
       {
         "id": 1,
         "name": "Holiday",
         "body": "Holiday",
+        "type": "Practice",
         "time": "12:00",
         "isIn": false
       },
@@ -25,6 +27,7 @@
         "id": 2,
         "name": "Ilon Musk",
         "body": "Falcon 3000 presentation",
+        "type": "Practice",
         "time": "16:30",
         "isIn": true
       },
@@ -32,6 +35,7 @@
         "id": 3,
         "name": "Birthday",
         "body": "Birthday",
+        "type": "Practice",
         "time": "16:45",
         "isIn": true
       }
@@ -44,6 +48,7 @@
         "id": 1,
         "name": "Event Name",
         "body": "Event Body",
+        "type": "Practice",
         "time": "12:00",
         "isIn": false
       },
@@ -51,6 +56,7 @@
         "id": 2,
         "name": "Event Name",
         "body": "Event Body",
+        "type": "Practice",
         "time": "16:30",
         "isIn": true
       }
@@ -63,6 +69,7 @@
         "id": 1,
         "name": "Event Name",
         "body": "Event Body",
+        "type": "Practice",
         "time": "12:00",
         "isIn": true
       }
@@ -75,6 +82,7 @@
         "id": 1,
         "name": "Event Name",
         "body": "Event Body",
+        "type": "Practice",
         "time": "12:00",
         "isIn": false
       },
@@ -82,6 +90,7 @@
         "id": 2,
         "name": "Event Name",
         "body": "Event Body",
+        "type": "Practice",
         "time": "16:30",
         "isIn": true
       }

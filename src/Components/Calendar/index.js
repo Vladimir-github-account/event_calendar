@@ -3,6 +3,7 @@ import moment               from 'moment';
 import _                    from 'lodash';
 import CalendarNav          from '../CalendarNav';
 import WeekList             from '../WeekList';
+import EventList            from '../EventList';
 import { VIEW_MODES }       from '../../constants';
 import styles               from './Calendar.module.sass';
 import weekDayStyles        from './WeekListStyles/WeekDays.module.sass';
@@ -97,6 +98,8 @@ class Calendar extends Component {
                     selectedDate={selectedDate}
                     viewDate={viewDate}
                     dayClickHandler={this.dayClickHandler}/>
+          <EventList events={events}
+                     selectedDate={selectedDate}/>
         </div>
     );
   }
