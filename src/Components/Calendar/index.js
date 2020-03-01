@@ -70,6 +70,7 @@ class Calendar extends Component {
 
   render() {
     const { currentDate, selectedDate, viewDate, viewMode } = this.state;
+    const { events } = this.props;
     return (
         <div className={styles.calendar}>
           <CalendarNav displayMonth={this.displayMonth}
@@ -90,6 +91,7 @@ class Calendar extends Component {
             <li className={weekDayStyles.weekDay}>S</li>
           </ul>
           <WeekList styles={weekListStyles.weekList}
+                    events={events}
                     viewMode={viewMode}
                     currentDate={currentDate}
                     selectedDate={selectedDate}

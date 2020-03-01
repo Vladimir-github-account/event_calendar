@@ -1,0 +1,28 @@
+@import "../../variables"
+
+.dateEventList
+  display: flex
+  position: absolute
+  min-width: 24px
+  max-width: 24px
+  bottom: 6px
+  left: 0
+  right: 0
+  margin: 0 auto
+
+.dateEventList > * + *
+  margin-left: 2px
+
+%dateEvent
+  width: 100%
+  height: 3px
+  border-radius: 6px
+
+.inDateEvent
+  @extend %dateEvent
+  background-color: $secondary-color
+
+.outDateEvent
+  @extend %dateEvent
+  background-color: #BAD1CD
+

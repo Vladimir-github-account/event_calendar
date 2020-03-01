@@ -5,7 +5,10 @@ import Week           from '../Week';
 import { VIEW_MODES } from '../../constants';
 
 function WeekList(props) {
-  const { currentDate, selectedDate, viewDate, viewMode, styles, dayClickHandler } = props;
+  const {
+    currentDate, selectedDate, viewDate, viewMode, styles, dayClickHandler,
+    events
+  } = props;
   const firstDayOfMonth = moment( viewDate ).date( 1 );
   const viewDateMonth = moment( viewDate ).format( 'M' );
   const weeksComponents = [];
@@ -13,6 +16,7 @@ function WeekList(props) {
   do {
     const firstDayOfWeek = moment( firstDayOfMonth ).day( 0 );
     const weekElement = <Week key={firstDayOfWeek}
+                              events={events}
                               firstDayOfWeek={firstDayOfWeek}
                               currentDate={currentDate}
                               selectedDate={selectedDate}
@@ -34,10 +38,11 @@ function WeekList(props) {
 }
 
 WeekList.propTypes = {
-  currentDate: PropTypes.instanceOf( moment ),
+  events: PropTypes.array,
+  currentDate: PropTypes.instanceOf( moment ).isRequired,
   selectedDate: PropTypes.instanceOf( moment ),
-  viewDate: PropTypes.instanceOf( moment ),
-  viewMode: PropTypes.any,
+  viewDate: PropTypes.instanceOf( moment ).isRequired,
+  viewMode: PropTypes.any.isRequired,
   styles: PropTypes.any
 };
 

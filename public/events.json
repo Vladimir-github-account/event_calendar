@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2020-02-29",
+    "events": [
+      {
+        "id": 1,
+        "name": "February",
+        "body": "February",
+        "time": "11:00",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-03-29",
+    "events": [
+      {
+        "id": 1,
+        "name": "Holiday",
+        "body": "Holiday",
+        "time": "12:00",
+        "isIn": false
+      },
+      {
+        "id": 2,
+        "name": "Ilon Musk",
+        "body": "Falcon 3000 presentation",
+        "time": "16:30",
+        "isIn": true
+      },
+      {
+        "id": 3,
+        "name": "Birthday",
+        "body": "Birthday",
+        "time": "16:45",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-03-19",
+    "events": [
+      {
+        "id": 1,
+        "name": "Event Name",
+        "body": "Event Body",
+        "time": "12:00",
+        "isIn": false
+      },
+      {
+        "id": 2,
+        "name": "Event Name",
+        "body": "Event Body",
+        "time": "16:30",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-03-28",
+    "events": [
+      {
+        "id": 1,
+        "name": "Event Name",
+        "body": "Event Body",
+        "time": "12:00",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-03-27",
+    "events": [
+      {
+        "id": 1,
+        "name": "Event Name",
+        "body": "Event Body",
+        "time": "12:00",
+        "isIn": false
+      },
+      {
+        "id": 2,
+        "name": "Event Name",
+        "body": "Event Body",
+        "time": "16:30",
+        "isIn": true
+      }
+    ]
+  }
+]

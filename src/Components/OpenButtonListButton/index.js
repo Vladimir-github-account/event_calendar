@@ -8,31 +8,31 @@ class OpenButtonListButton extends Component {
   constructor(props) {
     super( props );
     this.state = {
-      isOpened: false
+      isLocked: true
     };
   }
 
   displayOrHideButtonsList = (e) => {
     this.setState( {
-                     isOpened: !this.state.isOpened
+                     isLocked: !this.state.isLocked
                    } );
   };
 
   render() {
     const { label, styles, displayMonth, displayWeek, changeViewButtonStyles } = this.props;
     const { buttonList, hidden, carriage, firstSpan, secondSpan, firstSpanFlip, secondSpanFlip } = OpenButtonListButtonStyles;
-    const { isOpened } = this.state;
+    const { isLocked } = this.state;
     const buttonsListStyles = classNames(
         buttonList,
-        { [`${hidden}`]: isOpened },
+        { [`${hidden}`]: isLocked },
     );
     return (
         <div className={styles}
              onClick={this.displayOrHideButtonsList}>
           {label}
           <div className={carriage}>
-            <span className={isOpened ? firstSpan : firstSpanFlip}/>
-            <span className={isOpened ? secondSpan : secondSpanFlip}/>
+            <span className={isLocked ? firstSpan : firstSpanFlip}/>
+            <span className={isLocked ? secondSpan : secondSpanFlip}/>
           </div>
           <div className={buttonsListStyles}>
             <Button styles={changeViewButtonStyles}
