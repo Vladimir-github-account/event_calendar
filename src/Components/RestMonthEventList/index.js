@@ -1,23 +1,19 @@
 import React                 from 'react';
 import PropTypes             from 'prop-types';
-import RestMonthDayEventList from '../../RestMonthDayEventList';
+import RestMonthDayEventList from '../RestMonthDayEventList';
+import styles                from './RestMonthEventList.module.sass';
 
 function RestMonthEventList(props) {
-  const {restMonthEvents} = props;
+  const { restMonthEvents } = props;
   const restMonthEventsComponents = restMonthEvents.map(
-      event => {
-        return (
-            <li>
-              {
-                <RestMonthDayEventList date={event.date}
-                                       events={event.events}/>
-              }
-            </li>
-        );
-      }
+      event => (
+          <RestMonthDayEventList key={event.date}
+                                 date={event.date}
+                                 events={event.events}/>
+      )
   );
   return (
-      <ul>{restMonthEventsComponents}</ul>
+      <ul className={styles.restMonthEventList}>{restMonthEventsComponents}</ul>
   );
 }
 

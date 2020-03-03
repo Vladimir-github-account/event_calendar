@@ -1,0 +1,30 @@
+@import "../../variables"
+
+%eventFooter
+  padding: 9px 16px 12px 22px
+  display: flex
+  align-items: center
+
+.inEventFooter
+  @extend %eventFooter
+  background-color: $secondary-color
+
+.outEventFooter
+  @extend %eventFooter
+  background-color: $accent-color
+
+%eventStatus
+  text-transform: uppercase
+  font-weight: 700
+  margin-left: 19px
+
+.inEventStatus
+  @extend %eventStatus
+  color: $minor-color
+
+.outEventStatus
+  @extend %eventStatus
+  color: $text-color1
+
+.footerChevronIcon
+  margin-left: auto

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes            from 'prop-types';
-import Icon                 from '@mdi/react';
-import { mdiCheckBold }     from '@mdi/js';
-import styles               from './SelectedDayEventListItem.module.sass';
+import React, { Component }   from 'react';
+import PropTypes              from 'prop-types';
+import SelectedDayEventFooter from '../SelectedDayEventFooter';
+import styles                 from './SelectedDayEvent.module.sass';
 
-class SelectedDayEventListItem extends Component {
+class SelectedDayEvent extends Component {
   constructor(props) {
     super( props );
     this.state = {
@@ -21,7 +20,7 @@ class SelectedDayEventListItem extends Component {
   render() {
     const { event: { name, type, time, isIn, body } } = this.props;
     const {
-      event, eventFooter, eventHeader, eventName, eventStatus, eventTime,
+      event, eventHeader, eventName, eventTime,
       eventType, eventBody
     } = styles;
     return (
@@ -31,21 +30,16 @@ class SelectedDayEventListItem extends Component {
             <h4 className={eventType}>{type || ''}</h4>
             <h4 className={eventTime}>{time || 'Today'}</h4>
           </header>
-          <footer className={eventFooter}
-                  onClick={this.displayOrHideEventBody}>
-            <Icon path={mdiCheckBold}
-                  size="21px"
-                  color="white"/>
-            <h4 className={eventStatus}>{isIn ? 'I am in' : 'Not in'}</h4>
-          </footer>
+          <SelectedDayEventFooter isIn={isIn}
+                                  handleClick={this.displayOrHideEventBody}/>
           {this.state.isOpened && <div className={eventBody}>{body}</div>}
         </li>
     );
   }
 }
 
-SelectedDayEventListItem.propTypes = {
+SelectedDayEvent.propTypes = {
   event: PropTypes.object.isRequired
 };
 
-export default SelectedDayEventListItem;
+export default SelectedDayEvent;
