@@ -99,7 +99,9 @@ class Calendar extends Component {
                     viewDate={viewDate}
                     dayClickHandler={this.dayClickHandler}/>
           <EventList events={events}
-                     selectedDate={selectedDate}/>
+                     viewMode={viewMode}
+                     selectedDate={selectedDate}
+                     viewDate={viewDate}/>
         </div>
     );
   }
