@@ -3,6 +3,8 @@ import PropTypes                  from 'prop-types';
 import classNames                 from 'classnames';
 import Button                     from '../Button';
 import OpenButtonListButtonStyles from './OpenButtonListButton.module.sass';
+import Icon                       from '@mdi/react';
+import { mdiChevronUp }           from '@mdi/js';
 
 class OpenButtonListButton extends Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class OpenButtonListButton extends Component {
 
   render() {
     const { label, styles, displayMonth, displayWeek, changeViewButtonStyles } = this.props;
-    const { buttonList, hidden, carriage, firstSpan, secondSpan, firstSpanFlip, secondSpanFlip } = OpenButtonListButtonStyles;
+    const { buttonList, hidden } = OpenButtonListButtonStyles;
     const { isHiding } = this.state;
     const buttonsListStyles = classNames(
         buttonList,
@@ -30,10 +32,11 @@ class OpenButtonListButton extends Component {
         <div className={styles}
              onClick={this.displayOrHideButtonsList}>
           {label}
-          <div className={carriage}>
-            <span className={isHiding ? firstSpan : firstSpanFlip}/>
-            <span className={isHiding ? secondSpan : secondSpanFlip}/>
-          </div>
+          <Icon path={mdiChevronUp}
+                size="26px"
+                color="#E6EAEE"
+                opacity='0.5'
+                vertical={isHiding}/>
           <div className={buttonsListStyles}>
             <Button styles={changeViewButtonStyles}
                     clickHandler={displayWeek}

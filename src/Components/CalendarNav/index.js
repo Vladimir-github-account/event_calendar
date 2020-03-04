@@ -11,7 +11,7 @@ function CalendarNav(props) {
   const currentMonthLabel = moment( viewDate )
       .month( moment( viewDate ).month() )
       .format( 'MMMM' ).toUpperCase();
-  const { calendarNav, prevButton, nextButton, openButtonListButton, changeViewButton} = styles;
+  const { calendarNav, changeDateButton, openButtonListButton, changeViewButton } = styles;
 
   if ( viewMode === VIEW_MODES.MONTH ) {
     const prevMonthLabel = moment( viewDate )
@@ -22,7 +22,7 @@ function CalendarNav(props) {
         .format( 'MMM' ).toUpperCase();
     return (
         <nav className={calendarNav}>
-          <Button styles={prevButton}
+          <Button styles={changeDateButton}
                   clickHandler={prevMonth}
                   label={prevMonthLabel}/>
           <OpenButtonListButton
@@ -31,7 +31,7 @@ function CalendarNav(props) {
               displayMonth={displayMonth}
               displayWeek={displayWeek}
               label={currentMonthLabel}/>
-          <Button styles={nextButton}
+          <Button styles={changeDateButton}
                   clickHandler={nextMonth}
                   label={nextMonthLabel}/>
         </nav>
@@ -41,7 +41,7 @@ function CalendarNav(props) {
     const saturdayDate = moment( viewDate ).day( 6 ).format( 'DD' );
     return (
         <nav className={calendarNav}>
-          <Button styles={prevButton}
+          <Button styles={changeDateButton}
                   clickHandler={prevWeek}
                   label='PREV'/>
           <OpenButtonListButton
@@ -50,7 +50,7 @@ function CalendarNav(props) {
               displayMonth={displayMonth}
               displayWeek={displayWeek}
               label={currentMonthLabel + ' ' + sundayDate + '-' + saturdayDate}/>
-          <Button styles={nextButton}
+          <Button styles={changeDateButton}
                   clickHandler={nextWeek}
                   label='NEXT'/>
         </nav>
