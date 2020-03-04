@@ -8,18 +8,17 @@ function EventList(props) {
   const { events, selectedDate } = props;
   const selectedDayEvents = events.filter(
       event => (
-          moment( event.date ).isSame( moment( selectedDate ), 'day' ) )
+          moment(event.date).isSame(moment(selectedDate), 'day'))
   )[0];
-  const selectedDayEventsComponents = selectedDayEvents
-                                      ? <SelectedDayEvenList
-                                          selectedDayEvents={selectedDayEvents}/>
-                                      : undefined;
   const restMonthEvents = events.filter(
-      event => ( moment( event.date ).isAfter( moment( selectedDate ), 'day' ) )
+      event => (moment(event.date).isAfter(moment(selectedDate), 'day'))
   );
   return (
       <ul>
-        <li>{selectedDayEventsComponents}</li>
+        <li>{
+          selectedDayEvents &&
+          <SelectedDayEvenList selectedDayEvents={selectedDayEvents}/>
+        }</li>
         <li>{<RestMonthEventList restMonthEvents={restMonthEvents}/>}</li>
       </ul>
   );

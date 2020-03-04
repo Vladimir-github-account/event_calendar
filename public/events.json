@@ -63,19 +63,6 @@
     ]
   },
   {
-    "date": "2020-03-28",
-    "events": [
-      {
-        "id": 1,
-        "name": "Event Name",
-        "body": "Event Body",
-        "type": "Practice",
-        "time": "12:00",
-        "isIn": true
-      }
-    ]
-  },
-  {
     "date": "2020-03-27",
     "events": [
       {
@@ -92,6 +79,19 @@
         "body": "Event Body",
         "type": "Practice",
         "time": "16:30",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-03-28",
+    "events": [
+      {
+        "id": 1,
+        "name": "Event Name",
+        "body": "Event Body",
+        "type": "Practice",
+        "time": "12:00",
         "isIn": true
       }
     ]
