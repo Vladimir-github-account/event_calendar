@@ -1,8 +1,8 @@
 import React     from 'react';
 import PropTypes from 'prop-types';
-import styles    from './RestMonthDayEvent.module.sass';
+import styles    from './RestDayEvent.module.sass';
 
-function RestMonthDayEvent(props) {
+function RestDayEvent(props) {
   const { name, type, time, isIn } = props.event;
   const { inDayEvent, outDayEvent, eventType, eventName, eventTime } = styles;
   return (
@@ -16,8 +16,8 @@ function RestMonthDayEvent(props) {
   );
 }
 
-RestMonthDayEvent.propTypes = {
+RestDayEvent.propTypes = {
   event: PropTypes.object.isRequired
 };
 
-export default RestMonthDayEvent;
+export default RestDayEvent;
