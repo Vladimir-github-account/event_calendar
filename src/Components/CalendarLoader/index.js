@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
 import Calendar             from '../Calendar';
 import { EVENTS_URL }       from '../../constants';
+import styles               from './CalendarLoader.module.sass';
 
 class CalendarLoader extends Component {
   constructor(props) {
     super( props );
     this.state = {
       events: [],
+      error: null,
       isLoaded: false,
     };
   }
 
   loadData = () => {
-    fetch( EVENTS_URL )
-        .then( response => response.json() )
-        .then( events => {
-          this.setState( {
-                           events,
-                           isLoaded: true
-                         } );
-        } );
+    setTimeout( () => {
+      fetch( EVENTS_URL )
+          .then( response => response.json() )
+          .then( events => {
+            this.setState( {
+                             events,
+                             isLoaded: true
+                           } );
+          } ).catch(
+          error => {
+            this.setState( {
+                             error
+                           } );
+          }
+      );
+    }, 1000 );
   };
 
   componentDidMount() {
@@ -27,17 +37,17 @@ class CalendarLoader extends Component {
   }
 
   render() {
-    const { isLoaded } = this.state;
+    const { isLoaded, error } = this.state;
+    if ( error ) {
+      return null;
+    }
     if ( isLoaded ) {
       const { events } = this.state;
       return (
-          <div>
-            <Calendar events={events}/>
-          </div>
+          <Calendar events={events}/>
       );
-    } else {
-      return null;
     }
+    return <div className={styles.loader}>Loading...</div>;
   }
 }
 
