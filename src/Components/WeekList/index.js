@@ -9,30 +9,36 @@ function WeekList(props) {
     currentDate, selectedDate, viewDate, viewMode, styles, dayClickHandler,
     events
   } = props;
-  const firstDayOfMonth = moment( viewDate ).date( 1 );
-  const viewDateMonth = moment( viewDate ).format( 'M' );
+
+  if ( viewMode === VIEW_MODES.WEEK ) {
+    const firstDayOfWeek = moment( viewDate ).day( 0 );
+    return (
+        <ul className={styles}>
+          <Week events={events}
+                firstDayOfWeek={firstDayOfWeek}
+                currentDate={currentDate}
+                selectedDate={selectedDate}
+                clickHandler={dayClickHandler}
+                viewDate={viewDate}/>
+        </ul>
+    );
+  }
+
+  const firstDayOfWeek = moment( viewDate ).date( 1 ).day( 0 );
   const weeksComponents = [];
-  let viewWeek = null;
   do {
-    const firstDayOfWeek = moment( firstDayOfMonth ).day( 0 );
-    const weekElement = <Week key={firstDayOfWeek}
-                              events={events}
-                              firstDayOfWeek={firstDayOfWeek}
-                              currentDate={currentDate}
-                              selectedDate={selectedDate}
-                              clickHandler={dayClickHandler}
-                              viewDate={viewDate}/>;
-    weeksComponents.push( weekElement );
-    if ( moment( viewDate ).week() === moment( firstDayOfWeek ).week() ) {
-      viewWeek = weekElement;
-    }
-  } while (firstDayOfMonth.add( 1, 'w' )
-               .day( 0 )
-               .format( 'M' ) === viewDateMonth);
+    weeksComponents.push( <Week key={firstDayOfWeek}
+                                events={events}
+                                firstDayOfWeek={moment( firstDayOfWeek )}
+                                currentDate={currentDate}
+                                selectedDate={selectedDate}
+                                clickHandler={dayClickHandler}
+                                viewDate={viewDate}/> );
+  } while (firstDayOfWeek.add( 1, 'w' ).month()
+           === viewDate.month());
   return (
       <ul className={styles}>
-        {viewMode === VIEW_MODES.MONTH && weeksComponents}
-        {viewMode === VIEW_MODES.WEEK && viewWeek}
+        {weeksComponents}
       </ul>
   );
 }
@@ -43,7 +49,7 @@ WeekList.propTypes = {
   selectedDate: PropTypes.instanceOf( moment ),
   viewDate: PropTypes.instanceOf( moment ).isRequired,
   viewMode: PropTypes.any.isRequired,
-  styles: PropTypes.any
+  styles: PropTypes.string
 };
 
 export default WeekList;

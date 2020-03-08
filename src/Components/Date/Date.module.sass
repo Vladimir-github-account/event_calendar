@@ -23,9 +23,11 @@
   max-height: 40px
 
 .currentDay
+  @extend .monthDay
   color: red
 
 .selectedDay
+  @extend .monthDay
   background-color: $accent-color
   color: #fff
   border-radius: 5px

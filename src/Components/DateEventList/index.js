@@ -6,14 +6,13 @@ function DateEventList(props) {
   const { events } = props;
   const { dateEventList, outDateEvent, inDateEvent } = styles;
   const limitedEvents = events.slice( 0, 3 );
-  const components = limitedEvents.map( event => <li key={event.id}
-                                                     className={event.isIn
-                                                                ? inDateEvent
-                                                                : outDateEvent}/> );
-  return (
-      limitedEvents.length > 0
-      && <ul className={dateEventList}>{components}</ul>
+  const components = limitedEvents.map( event =>
+      <li key={event.id}
+          className={event.isIn
+                     ? inDateEvent
+                     : outDateEvent}/>
   );
+  return <ul className={dateEventList}>{components}</ul>;
 }
 
 DateEventList.propTypes = {
