@@ -1,70 +1,55 @@
-import React                from 'react';
-import PropTypes            from 'prop-types';
-import moment               from 'moment';
-import OpenButtonListButton from '../OpenButtonListButton';
-import Button               from '../Button';
-import { VIEW_MODES }       from '../../constants';
-import styles               from './CalendarNav.module.sass';
+import React             from 'react';
+import PropTypes         from 'prop-types';
+import moment            from 'moment';
+import { VIEW_MODES }    from '../../constants';
+import CalendarNavRender from './CalendarNavRender';
 
 function CalendarNav(props) {
-  const { displayMonth, displayWeek, nextMonth, prevMonth, nextWeek, prevWeek, viewMode, viewDate } = props;
-  const currentMonthLabel = moment( viewDate )
-      .month( moment( viewDate ).month() )
-      .format( 'MMMM' ).toUpperCase();
-  const { calendarNav, changeDateButton, openButtonListButton, changeViewButton } = styles;
-
+  const {
+    displayMonth, displayWeek, nextMonth, prevMonth, nextWeek, prevWeek,
+    viewMode, viewDate
+  } = props;
+  const currentMonth = viewDate.format( 'MMMM' ).toUpperCase();
   if ( viewMode === VIEW_MODES.MONTH ) {
-    const prevMonthLabel = moment( viewDate )
-        .month( moment( viewDate ).month() - 1 )
+    const prevLabel = moment( viewDate ).month( viewDate.month() - 1 )
         .format( 'MMM' ).toUpperCase();
-    const nextMonthLabel = moment( viewDate )
-        .month( moment( viewDate ).month() + 1 )
+    const nextLabel = moment( viewDate ).month( viewDate.month() + 1 )
         .format( 'MMM' ).toUpperCase();
-    return (
-        <nav className={calendarNav}>
-          <Button styles={changeDateButton}
-                  clickHandler={prevMonth}
-                  label={prevMonthLabel}/>
-          <OpenButtonListButton
-              styles={openButtonListButton}
-              changeViewButtonStyles={changeViewButton}
-              displayMonth={displayMonth}
-              displayWeek={displayWeek}
-              label={currentMonthLabel}/>
-          <Button styles={changeDateButton}
-                  clickHandler={nextMonth}
-                  label={nextMonthLabel}/>
-        </nav>
-    );
+    const props = {
+      OpenButtonListButtonLabel: currentMonth,
+      prevHandler: prevMonth,
+      nextHandler: nextMonth,
+      prevLabel,
+      nextLabel,
+      displayMonth,
+      displayWeek,
+    };
+    return <CalendarNavRender {...props}/>;
   } else {
     const sundayDate = moment( viewDate ).day( 0 ).format( 'DD' );
     const saturdayDate = moment( viewDate ).day( 6 ).format( 'DD' );
-    return (
-        <nav className={calendarNav}>
-          <Button styles={changeDateButton}
-                  clickHandler={prevWeek}
-                  label='PREV'/>
-          <OpenButtonListButton
-              styles={openButtonListButton}
-              changeViewButtonStyles={changeViewButton}
-              displayMonth={displayMonth}
-              displayWeek={displayWeek}
-              label={currentMonthLabel + ' ' + sundayDate + '-' + saturdayDate}/>
-          <Button styles={changeDateButton}
-                  clickHandler={nextWeek}
-                  label='NEXT'/>
-        </nav>
-    );
+    const OpenButtonListButtonLabel = `${currentMonth} ${sundayDate}-${saturdayDate}`;
+    const props = {
+      OpenButtonListButtonLabel,
+      prevHandler: prevWeek,
+      nextHandler: nextWeek,
+      prevLabel: 'PREV',
+      nextLabel: 'NEXT',
+      displayMonth,
+      displayWeek,
+    };
+    return <CalendarNavRender {...props}/>;
   }
 
 }
 
 CalendarNav.propTypes = {
-  viewModeClickHandler: PropTypes.func,
-  nextMonth: PropTypes.func,
-  prevMonth: PropTypes.func,
-  viewMode: PropTypes.any,
-  viewDate: PropTypes.instanceOf( moment )
+  nextMonth: PropTypes.func.isRequired,
+  prevMonth: PropTypes.func.isRequired,
+  nextWeek: PropTypes.func.isRequired,
+  prevWeek: PropTypes.func.isRequired,
+  viewMode: PropTypes.any.isRequired,
+  viewDate: PropTypes.instanceOf( moment ).isRequired
 };
 
 export default CalendarNav;

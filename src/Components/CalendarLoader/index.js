@@ -37,12 +37,11 @@ class CalendarLoader extends Component {
   }
 
   render() {
-    const { isLoaded, error } = this.state;
+    const { isLoaded, error, events } = this.state;
     if ( error ) {
       return null;
     }
     if ( isLoaded ) {
-      const { events } = this.state;
       return (
           <Calendar events={events}/>
       );
